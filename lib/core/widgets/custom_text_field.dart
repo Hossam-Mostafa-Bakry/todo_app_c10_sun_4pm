@@ -74,7 +74,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       inputFormatters: widget.inputFormatters,
       enabled: widget.enabled,
       style: theme.textTheme.bodyLarge?.copyWith(color: Colors.black),
-      // autovalidateMode: AutovalidateMode.disabled,
+      autovalidateMode: AutovalidateMode.disabled,
       textInputAction: widget.action ?? TextInputAction.done,
       focusNode: widget.focusNode,
       decoration: InputDecoration(
@@ -117,12 +117,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
             width: 1,
           ),
         ),
-        errorStyle: const TextStyle(color: Colors.deepOrangeAccent, fontWeight: FontWeight.w400),
+        errorStyle:
+            const TextStyle(color: Colors.red, fontWeight: FontWeight.w400),
         errorMaxLines: 6,
         errorBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: Colors.deepOrangeAccent,
+            color: Colors.red,
             width: 1,
           ),
         ),

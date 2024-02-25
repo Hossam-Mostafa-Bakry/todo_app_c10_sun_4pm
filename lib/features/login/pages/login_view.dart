@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app_c10_sun_4pm/core/network_layer/firebase_utils.dart';
+import 'package:todo_app_c10_sun_4pm/core/services/snack_bar_service.dart';
 import 'package:todo_app_c10_sun_4pm/core/widgets/custom_text_field.dart';
+import 'package:todo_app_c10_sun_4pm/features/layout_view.dart';
 import 'package:todo_app_c10_sun_4pm/features/register/pages/register_view.dart';
 import 'package:todo_app_c10_sun_4pm/features/settings_provider.dart';
 
 class LoginView extends StatelessWidget {
-
   static const String routeName = "login";
-
 
   var formKey = GlobalKey<FormState>();
   var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+
   LoginView({super.key});
 
   @override
@@ -106,8 +108,21 @@ class LoginView extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                   ),
                   onPressed: () {
-                    if(formKey.currentState!.validate()) {}
-
+                    if (formKey.currentState!.validate()) {
+                      FirebaseUtils()
+                          .signIN(emailController.text, passwordController.text)
+                          .then((value) {
+                        if (value) {
+                          SnackBarService.showSuccessMessage(
+                              "Your logged in successfully");
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            LayoutView.routeName,
+                            (route) => false,
+                          );
+                        }
+                      });
+                    }
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

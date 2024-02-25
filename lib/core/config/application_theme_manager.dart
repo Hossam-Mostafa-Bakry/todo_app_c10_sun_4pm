@@ -20,6 +20,31 @@ class ApplicationThemeManager {
         color: Colors.white,
       ),
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        elevation: 0,
+        backgroundColor: primaryColor,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+            side: const BorderSide(
+              color: Colors.white,
+              width: 5,
+            ))),
+    bottomAppBarTheme: const BottomAppBarTheme(
+      padding: EdgeInsets.zero,
+      color: Colors.white,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
+      selectedIconTheme: IconThemeData(
+        color: primaryColor,
+        size: 36,
+      ),
+      unselectedIconTheme:
+          const IconThemeData(color: Color(0xFFC8C9CB), size: 30),
+    ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontFamily: "Poppins",
@@ -70,6 +95,31 @@ class ApplicationThemeManager {
       iconTheme: IconThemeData(
         color: Color(0xFF060E1E),
       ),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        elevation: 0,
+        backgroundColor: primaryColor,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+            side: const BorderSide(
+              color: Color(0xFF707070),
+              width: 5,
+            ))),
+    bottomAppBarTheme: const BottomAppBarTheme(
+      padding: EdgeInsets.zero,
+      color: Colors.white,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
+      selectedIconTheme: IconThemeData(
+        color: primaryColor,
+        size: 36,
+      ),
+      unselectedIconTheme:
+          const IconThemeData(color: Color(0xFFC8C9CB), size: 30),
     ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(

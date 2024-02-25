@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app_c10_sun_4pm/core/network_layer/firebase_utils.dart';
+import 'package:todo_app_c10_sun_4pm/core/services/snack_bar_service.dart';
+import 'package:todo_app_c10_sun_4pm/features/login/pages/login_view.dart';
 
 import '../../../core/widgets/custom_text_field.dart';
 import '../../settings_provider.dart';
@@ -148,7 +151,7 @@ class RegisterView extends StatelessWidget {
                         return "you must enter your password !";
                       }
 
-                      if(value != passwordController.text) {
+                      if (value != passwordController.text) {
                         return "password not matching";
                       }
 
@@ -166,9 +169,23 @@ class RegisterView extends StatelessWidget {
                           horizontal: 40, vertical: 12),
                     ),
                     onPressed: () {
-                      if(formKey.currentState!.validate()) {
-                        print("fields validation done");
-                        print("calling request");
+                      if (formKey.currentState!.validate()) {
+                        FirebaseUtils()
+                            .createNewAccount(
+                          emailController.text,
+                          passwordController.text,
+                        )
+                            .then((value) {
+                          if (value == true) {
+                            SnackBarService.showSuccessMessage(
+                                "Account successfully created");
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              LoginView.routeName,
+                              (route) => false,
+                            );
+                          }
+                        });
                       }
                     },
                     child: Row(
